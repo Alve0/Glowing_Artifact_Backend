@@ -93,14 +93,6 @@ async function run() {
       try {
         const userUID = req.headers["user-uid"];
 
-        const token = req.decodedToken;
-        console.log("Decoded token:", token);
-
-        if (userUID !== token.uid) {
-          console.log("User UID does not match decoded token UID");
-          return res.status(403).json({ error: "Forbidden access" });
-        }
-
         if (!userUID) {
           return res.status(400).json({ error: "User UID is required" });
         }
